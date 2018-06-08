@@ -1,0 +1,11 @@
+{
+  "module": "@guthega/elastic_receiver",
+  "version": "0.1.0",
+  "properties": {
+    "index": "guthega",
+    "type": "event",
+    "connection": {
+      "host": "localhost:9200"
+    }
+  }
+}
