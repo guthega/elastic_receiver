@@ -5,10 +5,13 @@ node_js:
 cache:
   directories:
   - node_modules
-services:
-  - elasticsearch
-before_script:
-  - sleep 10
+before_install:
+  - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.deb
+  - sudo dpkg -i --force-confnew elasticsearch-6.2.4.deb
+  - sudo /bin/systemctl daemon-reload
+  - sudo /bin/systemctl enable elasticsearch.service
+  - sudo systemctl start elasticsearch.service
+  - until curl --silent -XGET --fail http://localhost:9200; do printf '.'; sleep 1; done
 script:
   - yarn lint
   - yarn test
