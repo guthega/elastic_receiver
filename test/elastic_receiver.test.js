@@ -45,7 +45,7 @@ describe('elastic_receiver', function() {
     });
 
     it('should store a document in the Elasticsearch index', function(done) {
-      this.timeout(2000);
+      this.timeout(10000);
       //wait for a second while the ES index catches up
       setTimeout(() => {
         const search = {
@@ -71,7 +71,7 @@ describe('elastic_receiver', function() {
 
           done();
         });
-      }, 1000);
+      }, 5000);
     });
   });
 });
