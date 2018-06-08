@@ -8,9 +8,7 @@ cache:
 before_install:
   - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.deb
   - sudo dpkg -i --force-confnew elasticsearch-6.2.4.deb
-  - sudo /bin/systemctl daemon-reload
-  - sudo /bin/systemctl enable elasticsearch.service
-  - sudo systemctl start elasticsearch.service
+  - sudo /etc/init.d/elasticsearch start
   - until curl --silent -XGET --fail http://localhost:9200; do printf '.'; sleep 1; done
 script:
   - yarn lint
